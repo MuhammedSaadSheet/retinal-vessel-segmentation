@@ -1,0 +1,78 @@
+#=================================
+# virtuell env
+# its lokal env folder, it should not be tracked by git
+# other users can create their own virtual env folder with requirements.txt
+#=================================
+.venv/ 
+venv/
+env/
+
+
+#=================================
+# Python cache
+# this is a cache folder for python, it should not be tracked by git
+# cache folder is created by python automatically, does save time for python to run the code
+#=================================
+__python_cache__/
+*.pyc
+*.pyo
+*.pyd
+
+
+#=================================
+# Jupyter Notebook Cache
+# this is a cache folder for jupyter notebook, it should not be tracked by git
+#=================================
+.ipynb_checkpoints/
+
+
+#=================================
+# Test- and Tools-Caches
+#=================================
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+
+
+#=================================
+# Data Sets should not be tracked by git
+#=================================
+data/raw/*
+data/processed/*
+
+
+#=================================
+# exceptions data files
+#=================================
+!data/README.md
+!data/raw/.gitkeep
+!data/raw/Drive/
+!data/raw/Drive/.gitkeep
+!data/processed/.gitkeep
+
+#=================================
+# results should not be tracked by git
+#=================================
+results/*
+
+#=================================
+# exceptions results files
+#=================================
+!results/masks/
+!results/masks/.gitkeep
+!results/overlays/
+!results/overlays/.gitkeep
+!results/metrics/
+!results/metrics/.gitkeep
+
+
+#=================================
+# operating system files
+#=================================
+.DS_Store
+Thumbs.db
+
+#=================================
+# IDE files
+#=================================
+.vscode/
