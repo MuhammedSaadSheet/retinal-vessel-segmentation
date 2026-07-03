@@ -1,0 +1,40 @@
+# ============================================================
+# U-Net configuration for retinal vessel segmentation
+# This config is for a later deep learning extension.
+# ============================================================
+
+preprocessing:
+  clahe_clip_limit: 2.0
+  clahe_tile_grid_size: [8, 8]
+  input_size: [256, 256]
+
+segmentation:
+  model: unet
+  num_classes: 2
+  encoder: resnet34
+  encoder_weights: imagenet
+  activation: softmax
+
+training:
+  epochs: 50
+  batch_size: 8
+  learning_rate: 0.0001
+  optimizer: adam
+  loss: cross_entropy
+  metrics:
+    - accuracy
+    - dice
+
+paths:
+  data_dir: data/raw/DRIVE
+
+  train_images: images/train
+  train_masks: masks/train
+
+  val_images: images/val
+  val_masks: masks/val
+
+  test_images: images/test
+  test_masks: masks/test
+
+  output_dir: results/unet

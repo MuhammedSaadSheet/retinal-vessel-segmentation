@@ -1,0 +1,20 @@
+# ============================================================
+# Default configuration for classical retinal vessel segmentation
+# Method: Green channel + CLAHE + Frangi filter + Otsu threshold
+# ============================================================
+
+preprocessing:
+  clahe_clip_limit: 2.0
+  clahe_tile_grid_size: [8, 8]
+
+segmentation:
+  method: frangi
+
+  min_object_size: 80
+
+  hole_area_threshold: 80
+
+paths:
+  data_dir: data/raw/DRIVE
+
+  output_dir: results
