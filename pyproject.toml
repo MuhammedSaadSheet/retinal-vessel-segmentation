@@ -1,11 +1,11 @@
 [project]
-name "retinal-vessel-segmentation"
+name = "retinal-vessel-segmentation"
 version = "0.1.0"
 description = "Classical image processing pipeline for retinal blood vessel segmentation on DRIVE images."
 readme = "README.md"
 requires-python = ">=3.10"
 authors = [
-    { name = "Muhammed Saad" }
+    { name = "Muhammed" }
 ]
 license = { text = "MIT" }
 
