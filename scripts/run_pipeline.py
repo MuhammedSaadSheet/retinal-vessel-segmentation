@@ -1,20 +1,21 @@
 import argparse
-from logging import config
 from pathlib import Path
 
-from retinal_vessel.config import load_config
-from retinal_vessel.pipeline import run_pipeline
+from retinal_vessels.config import load_config
+from retinal_vessels.pipeline import run_single_image_pipeline
+
 
 def parse_args():
     """
     Parse command-line arguments.
 
-    This allows the pipeline to be started from the terminal, for example:
-
+    Example:
         python scripts/run_pipeline.py --image data/raw/DRIVE/test/images/01_test.tif
     """
-    parser = argparse.ArgumentParser(description="Run the retinal vessel segmentation pipeline.")
-    
+    parser = argparse.ArgumentParser(
+        description="Run the retinal vessel segmentation pipeline."
+    )
+
     parser.add_argument(
         "--image",
         required=True,
@@ -35,25 +36,24 @@ def parse_args():
 
     return parser.parse_args()
 
-    def main():
-        """
-        """
-        args = parse_args()
 
-        config = load_config(args.config)
+def main():
+    args = parse_args()
 
-        if args.output_dir is not None:
-            config["output_dir"] = args.output_dir
-        
-        preprocessing_config = config.get("preprocessing", {})
-        segmentation_config = config.get("segmentation", {})
-        path_config = config.get("paths", {})
+    config = load_config(args.config)
 
-        image_path = Path(args.image)
+    preprocessing_config = config.get("preprocessing", {})
+    segmentation_config = config.get("segmentation", {})
+    path_config = config.get("paths", {})
 
-        output_dir = Path(path_config.get("output_dir", "outputs"))
+    image_path = Path(args.image)
 
-        result_paths = run_single_image_pipeline(
+    if args.output_dir is not None:
+        output_dir = Path(args.output_dir)
+    else:
+        output_dir = Path(path_config.get("output_dir", "results"))
+
+    result_paths = run_single_image_pipeline(
         image_path=image_path,
         output_dir=output_dir,
         image_name=image_path.stem,
